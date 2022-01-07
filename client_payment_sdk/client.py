@@ -59,16 +59,66 @@ class ClientPaymentSDK(object):
         return response
 
     def init_3ds(self, device):
+        """
+        Payment Initiation
+
+        # Arguments
+
+        # Raises
+
+        # Returns
+
+        """
         pass
 
-    def get_status(self, param):
+    def get_status(self, params):
+        """
+        Payment Initiation
+
+        # Arguments
+
+        # Raises
+
+        # Returns
+
+        """
         pass
 
-    def get_balance(self, param):
+    def get_balance(self, params):
+        """
+        Payment Initiation
+
+        # Arguments
+
+        # Raises
+
+        # Returns
+
+        """
         pass
 
-    def withdrawal(self, param):
+    def withdrawal(self, params):
+        """
+        Payment Initiation
+
+        # Arguments
+
+        # Raises
+
+        # Returns
+
+        """
         pass
 
     def get_withdrawal_status(self, params):
+        """
+        Payment Initiation
+
+        # Arguments
+
+        # Raises
+
+        # Returns
+
+        """
         pass
