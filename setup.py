@@ -5,7 +5,7 @@ from io import open
 
 VERSION = '0.0.1'
 
-long_description = open('README.rst', 'rt', encoding='utf8').read()
+long_description = open('README.md', 'rt', encoding='utf8').read()
 
 # PyPI can't process links with anchors
 long_description = re.sub(r'<(.*)#.*>`_', '<\g<1>>`_', long_description)
@@ -23,8 +23,8 @@ setup(
     author_email='viksnamax@mail.ru',
     license='MIT license',
 
-    url='https://github.com/Space-Around/sbank-payment-sdk-python.git',
-    download_url='https://github.com/Space-Around/sbank-payment-sdk-python.git/tarball/%s' % VERSION,
+    url='https://github.com/Space-Around/client-payment-sdk-python.git',
+    download_url='https://github.com/Space-Around/client-payment-sdk-python.git/tarball/%s' % VERSION,
 
     requires=[
         'requests (>=2.9.1)'
