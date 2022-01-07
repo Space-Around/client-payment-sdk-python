@@ -66,3 +66,6 @@ class ClientPaymentSDK(object):
 
     def get_balance(self, param):
         pass
+
+    def withdraw(self, param):
+        pass
