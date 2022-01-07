@@ -58,8 +58,8 @@ class ClientPaymentSDK(object):
 
         return response
 
-    def init_3ds(self, device_channel, device_browser_ip, device_browser_accept_header, device_browser_java_enabled, \
-                 device_browser_language, device_browser_color_depth, device_browser_screen_height, \
-                 device_browser_screen_width, device_browser_tz, device_browser_user_agent, challenge_window_size):
+    def init_3ds(self, device):
         pass
 
+    def get_status(self, param):
+        pass
