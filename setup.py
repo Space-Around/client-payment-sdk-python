@@ -27,11 +27,15 @@ setup(
     download_url='https://github.com/Space-Around/client-payment-sdk-python.git/tarball/%s' % VERSION,
 
     requires=[
-        'requests (>=2.9.1)'
+        'requests (>=2.9.1)',
+        'jws (>=0.1.3)',
+        'setuptools (>=57.0.0)'
     ],
 
     install_requires=[
-        'requests >=2.9.1'
+        'requests >=2.9.1',
+        'jws >=0.1.3',
+        'setuptools >=57.0.0'
     ],
 
     classifiers=[
