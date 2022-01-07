@@ -63,3 +63,6 @@ class ClientPaymentSDK(object):
 
     def get_status(self, param):
         pass
+
+    def get_balance(self, param):
+        pass
