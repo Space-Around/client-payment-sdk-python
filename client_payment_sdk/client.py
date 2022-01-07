@@ -69,3 +69,6 @@ class ClientPaymentSDK(object):
 
     def withdrawal(self, param):
         pass
+
+    def get_withdrawal_status(self, params):
+        pass
