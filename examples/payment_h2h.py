@@ -1,5 +1,4 @@
-from client_payment_sdk import ClientPaymentSDK
-from client_payment_sdk import sign
+from client_payment_sdk import ClientPaymentSDK, sign
 
 
 api_secret = 'aa21444f3f71'
