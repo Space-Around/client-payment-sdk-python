@@ -3,6 +3,7 @@ class ClientPaymentSDKError(Exception):
         super(ClientPaymentSDKError, self).__init__(message)
         self.errors = errors or {}
 
+
 class PaymentError(ClientPaymentSDKError):
     pass
 
