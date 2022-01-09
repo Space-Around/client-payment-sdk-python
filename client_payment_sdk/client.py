@@ -24,7 +24,7 @@ class ClientPaymentSDK(object):
             if method == 'get':
                 response = requests.get(url, params=data, headers=headers)
             else:
-                response = requests.post(url, params=data, headers=headers)
+                response = requests.post(url, data, headers=headers)
 
             if response.status_code != 200:
                 raise PaymentError(f'Server not available: {response.status_code}')
