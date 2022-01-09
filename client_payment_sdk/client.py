@@ -36,10 +36,10 @@ class ClientPaymentSDK(object):
         except requests.ConnectionError as error:
             raise PaymentError(error)
 
-    def _get(self, url, data):
+    def _get(self, url, data=None):
         return self._request(url, 'get', data)
 
-    def _post(self, url, data):
+    def _post(self, url, data=None):
         return self._request(url, 'post', data)
 
     def init(self, params):
