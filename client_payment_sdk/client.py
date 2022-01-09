@@ -16,17 +16,26 @@ class ClientPaymentSDK(object):
         self._public_id = public_id
         self._api_secret = api_secret
 
-    def _send_request(self, endpoint, data=None, request_id=None):
+    def _request(self, url, method, data=None, request_id=None):
         headers = None
         if request_id is not None:
             headers = {'X-Request-ID': request_id}
 
-        response = requests.get(self.URL + endpoint, params=data, headers=headers)
+        if method == 'get':
+            response = requests.get(url, params=data, headers=headers)
+        else:
+            response = requests.post(url, params=data, headers=headers)
 
         if response.headers['Content-Type'].find('application/json') != -1:
             return response.json(parse_float=decimal.Decimal)
         else:
             return response.content
+
+    def _get(self, url, data):
+        return self._request(url, 'get', data)
+
+    def _post(self, url, data):
+        return self._request(url, 'post', data)
 
     def init(self, params):
         """
