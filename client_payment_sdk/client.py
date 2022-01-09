@@ -45,7 +45,7 @@ class ClientPaymentSDK(object):
 
         return response
 
-    def get_status(self, params):
+    def payment_status(self, params):
         """
         Payment Initiation
 
@@ -58,7 +58,7 @@ class ClientPaymentSDK(object):
         """
         pass
 
-    def get_balance(self, params):
+    def balance(self, params):
         """
         Payment Initiation
 
@@ -71,7 +71,7 @@ class ClientPaymentSDK(object):
         """
         pass
 
-    def withdrawal(self, params):
+    def refund(self, params):
         """
         Payment Initiation
 
@@ -84,7 +84,7 @@ class ClientPaymentSDK(object):
         """
         pass
 
-    def get_withdrawal_status(self, params):
+    def refund_status(self, params):
         """
         Payment Initiation
 
