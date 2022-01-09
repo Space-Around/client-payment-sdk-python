@@ -9,7 +9,7 @@ params = {
     'product_id': '15'
 }
 
-params['signature'] = sign('/init', 'GET', params, api_secret)
+params['signature'] = sign('/init', 'POST', params, api_secret)
 
 client = ClientPaymentSDK(None, api_secret)
 html = client.init(params)
