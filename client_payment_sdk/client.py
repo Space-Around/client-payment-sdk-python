@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-from copy import deepcopy
 import decimal
+
 import requests
-from jwcrypto import jws, jwk
-from jwcrypto.common import json_encode, json_decode
+from exceptions import PaymentError
 
 
 class ClientPaymentSDK(object):
@@ -21,15 +20,21 @@ class ClientPaymentSDK(object):
         if request_id is not None:
             headers = {'X-Request-ID': request_id}
 
-        if method == 'get':
-            response = requests.get(url, params=data, headers=headers)
-        else:
-            response = requests.post(url, params=data, headers=headers)
+        try:
+            if method == 'get':
+                response = requests.get(url, params=data, headers=headers)
+            else:
+                response = requests.post(url, params=data, headers=headers)
 
-        if response.headers['Content-Type'].find('application/json') != -1:
-            return response.json(parse_float=decimal.Decimal)
-        else:
-            return response.content
+            if response.status_code != 200:
+                raise PaymentError(f'Server not available: {response.status_code}')
+
+            if response.headers['Content-Type'].find('application/json') != -1:
+                return response.json(parse_float=decimal.Decimal)
+            else:
+                return response.content.decode('utf-8')
+        except requests.ConnectionError as error:
+            raise PaymentError(error)
 
     def _get(self, url, data):
         return self._request(url, 'get', data)
@@ -50,7 +55,7 @@ class ClientPaymentSDK(object):
         """
         endpoint = '/init'
 
-        response = self._send_request(endpoint, params)
+        response = self._get(self.URL + endpoint, params)
 
         return response
 
