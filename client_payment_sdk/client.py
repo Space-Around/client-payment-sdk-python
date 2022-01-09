@@ -57,7 +57,7 @@ class ClientPaymentSDK(object):
 
         return self._post(self.URL + endpoint, params)
 
-    def payment_status(self, params):
+    def status(self, params):
         """
         Payment Initiation
 
