@@ -85,7 +85,7 @@ class ClientPaymentSDK(object):
 
         return self._get(self.URL + endpoint, params)
 
-    def refund(self, params):
+    def withdrawal(self, params):
         """
         Payment Initiation
 
@@ -96,7 +96,9 @@ class ClientPaymentSDK(object):
         # Returns
 
         """
-        pass
+        endpoint = '/withdrawal_request'
+        
+        return self._get(self.URL + endpoint, params)
 
     def refund_status(self, params):
         """
