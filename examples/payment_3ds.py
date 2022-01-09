@@ -20,7 +20,7 @@ params = {'amount': '100',
           'challenge_window_size': '02'
           }
 
-params['signature'] = sign('/init', params, api_secret)
+params['signature'] = sign('/init', 'GET', params, api_secret)
 
 client = ClientPaymentSDK(None, api_secret)
 result = client.init(params)

@@ -13,7 +13,7 @@ params = {
     'cvc': '1'
 }
 
-params['signature'] = sign('/init', params, api_secret)
+params['signature'] = sign('/init', 'GET', params, api_secret)
 
 client = ClientPaymentSDK(None, api_secret)
 json = client.init(params)
