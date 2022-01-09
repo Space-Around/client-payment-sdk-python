@@ -7,3 +7,4 @@
 from .client import ClientPaymentSDK
 from .sign import sign
 from .exceptions import ClientPaymentSDKError, PaymentError, MissArgumentError
+from .utils import dict_to_str
