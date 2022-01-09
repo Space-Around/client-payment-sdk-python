@@ -7,7 +7,7 @@ params = {
     'merchant_id': '13',
     'order': 'fb11ff6c-7145-11ec-9e37-0242ac130022',
     'product_id': '15',
-    'pan': '4242424242424242',
+    'pan': '4111111111111111',
     'expire_month': '01',
     'expire_year': '25',
     'cvc': '1'

@@ -3,9 +3,9 @@ from client_payment_sdk import ClientPaymentSDK, sign
 
 api_secret = 'aa21444f3f71'
 params = {
-    'amount': '100',
+    'amount': '90',
     'merchant_id': '13',
-    'order': 'fb11ff6c-7145-11ec-9e37-0242ac130032',
+    'order': 'fb11ff6c-7145-11ec-9e37-0242ac130022',
     'product_id': '15'
 }
 
