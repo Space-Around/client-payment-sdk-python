@@ -2,7 +2,7 @@
 import decimal
 
 import requests
-from exceptions import PaymentError
+from .exceptions import PaymentError
 
 
 class ClientPaymentSDK(object):
@@ -55,7 +55,7 @@ class ClientPaymentSDK(object):
         """
         endpoint = '/init'
 
-        response = self._get(self.URL + endpoint, params)
+        response = self._post(self.URL + endpoint, params)
 
         return response
 
