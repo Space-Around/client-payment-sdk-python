@@ -28,21 +28,8 @@ class ClientPaymentSDK(object):
         else:
             return response.content
 
-    def _sign(self, endpoint, payload, secret):
-        header = {'alg': 'HS256'}
-
-        key = jwk.JWK.from_password(secret)
-
-        sorted_param = dict(sorted(payload.items(), key=lambda x: x[0]))
-
-        payload_dict = {'PATH': endpoint, 'GET': sorted_param}
-        payload_str = str(payload_dict).replace('\'', '"').replace(' ', '')
-
-        jwstoken = jws.JWS(payload_str.encode('utf-8'))
-        jwstoken.add_signature(key, None, json_encode(header), json_encode({"kid": key.thumbprint()}))
-        jws_data = json_decode(jwstoken.serialize())
-
-        return jws_data['signature']
+    def test_sign(self, endpoint, payload, secret):
+        return self._sign(endpoint, payload, secret)
 
     def init(self, params):
         """
@@ -56,11 +43,8 @@ class ClientPaymentSDK(object):
 
         """
         endpoint = '/init'
-        data = deepcopy(params)
 
-        data['signature'] = self._sign(endpoint, params,)
-
-        response = self._send_request(endpoint, data)
+        response = self._send_request(endpoint, params)
 
         return response
 
