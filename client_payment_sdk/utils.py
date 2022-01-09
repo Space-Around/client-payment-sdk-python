@@ -2,7 +2,7 @@ from jwcrypto import jws, jwk
 from jwcrypto.common import json_encode, json_decode
 
 
-def sign(self, endpoint, payload, secret):
+def sign(endpoint, payload, secret):
     header = {'alg': 'HS256'}
 
     key = jwk.JWK.from_password(secret)

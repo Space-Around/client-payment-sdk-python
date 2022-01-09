@@ -5,3 +5,4 @@
 
 # ClientPaymentSDK
 from .client import ClientPaymentSDK
+from .utils import sign
