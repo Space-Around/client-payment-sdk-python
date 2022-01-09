@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-import decimal
-
 import requests
 from .exceptions import PaymentError
 
@@ -30,7 +28,7 @@ class ClientPaymentSDK(object):
                 raise PaymentError(f'Server not available: {response.status_code}')
 
             if response.headers['Content-Type'].find('application/json') != -1:
-                return response.json(parse_float=decimal.Decimal)
+                return response.json()
             else:
                 return response.content.decode('utf-8')
         except requests.ConnectionError as error:
@@ -83,7 +81,9 @@ class ClientPaymentSDK(object):
         # Returns
 
         """
-        pass
+        endpoint = '/balance'
+
+        return self._get(self.URL + endpoint, params)
 
     def refund(self, params):
         """
