@@ -23,7 +23,7 @@ class ClientPaymentSDK(object):
 
         response = requests.get(self.URL + endpoint, params=data, headers=headers)
 
-        if response.headers['Content-Type'] == 'application/json; charset=utf-8':
+        if response.headers['Content-Type'].find('application/json') != -1:
             return response.json(parse_float=decimal.Decimal)
         else:
             return response.content
@@ -44,19 +44,6 @@ class ClientPaymentSDK(object):
         response = self._send_request(endpoint, params)
 
         return response
-
-    def init_3ds(self, device):
-        """
-        Payment Initiation
-
-        # Arguments
-
-        # Raises
-
-        # Returns
-
-        """
-        pass
 
     def get_status(self, params):
         """
