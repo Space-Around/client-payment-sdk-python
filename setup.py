@@ -28,13 +28,13 @@ setup(
 
     requires=[
         'requests (>=2.9.1)',
-        'jws (>=0.1.3)',
+        'jwcrypto (>=1.0)',
         'setuptools (>=57.0.0)'
     ],
 
     install_requires=[
         'requests >=2.9.1',
-        'jws >=0.1.3',
+        'jwcrypto >=1.0',
         'setuptools >=57.0.0'
     ],
 
