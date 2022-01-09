@@ -55,9 +55,7 @@ class ClientPaymentSDK(object):
         """
         endpoint = '/init'
 
-        response = self._post(self.URL + endpoint, params)
-
-        return response
+        return self._post(self.URL + endpoint, params)
 
     def payment_status(self, params):
         """
@@ -70,7 +68,9 @@ class ClientPaymentSDK(object):
         # Returns
 
         """
-        pass
+        endpoint = '/status'
+
+        return self._get(self.URL + endpoint, params)
 
     def balance(self, params):
         """
