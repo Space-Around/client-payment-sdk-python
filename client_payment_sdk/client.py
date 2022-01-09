@@ -28,9 +28,6 @@ class ClientPaymentSDK(object):
         else:
             return response.content
 
-    def test_sign(self, endpoint, payload, secret):
-        return self._sign(endpoint, payload, secret)
-
     def init(self, params):
         """
         Payment Initiation
