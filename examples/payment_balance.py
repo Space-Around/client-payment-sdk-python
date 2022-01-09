@@ -10,4 +10,4 @@ params['signature'] = sign('/balance', 'GET', params, api_secret)
 client = ClientPaymentSDK(None, api_secret)
 result = client.balance(params)
 
-print(type(result['balance']['RUB']))
+print(result)
