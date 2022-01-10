@@ -4,7 +4,7 @@ class ClientPaymentSDKError(Exception):
         self.errors = errors or {}
 
 
-class RequestPaymentError(ClientPaymentSDKError):
+class RequestError(ClientPaymentSDKError):
     pass
 
 class InternalServerError(ClientPaymentSDKError):
