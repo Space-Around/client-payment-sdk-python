@@ -26,16 +26,15 @@ class ClientPaymentSDK:
 
             if response.status_code == 400:
                 error = response.json()
-                code = ['code']
+                code = error['code']
                 message = error['message']
 
                 raise RequestError(f'error code: {code}, message: {message}')
             elif response.status_code == 500:
                 error = response.json()
-                code = error['code']
                 message = error['message']
 
-                raise InternalServerError(f'error code: {code}, message: {message}')
+                raise InternalServerError(f'message: {message}')
             elif response.status_code != 200:
                 raise RequestError(f'Server not available: {response.status_code}')
 
@@ -71,6 +70,8 @@ class ClientPaymentSDK:
 
         if not isinstance(params, dict):
             raise ValueError('passed value must be dict')
+
+        # if len(params['merchant_id'])
 
         return self._post(self.URL + endpoint, params)
 
