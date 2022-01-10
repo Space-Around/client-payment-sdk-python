@@ -7,6 +7,9 @@ class ClientPaymentSDKError(Exception):
 class RequestError(ClientPaymentSDKError):
     pass
 
+class PassedTypeError(ClientPaymentSDKError):
+    pass
+
 class InternalServerError(ClientPaymentSDKError):
     pass
 

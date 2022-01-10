@@ -6,5 +6,5 @@
 # ClientPaymentSDK
 from .client import ClientPaymentSDK
 from .sign import sign
-from .exceptions import ClientPaymentSDKError, RequestError, InternalServerError, MissArgumentError
+from .exceptions import ClientPaymentSDKError, RequestError, InternalServerError, MissArgumentError, PassedTypeError
 from .utils import dict_to_str

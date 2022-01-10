@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import requests
-from .exceptions import RequestError, InternalServerError
+from .exceptions import RequestError, InternalServerError, MissArgumentError, PassedTypeError
 
 
 class ClientPaymentSDK:
@@ -69,9 +69,10 @@ class ClientPaymentSDK:
         endpoint = '/init'
 
         if not isinstance(params, dict):
-            raise ValueError('passed value must be dict')
+            raise PassedTypeError('passed value must be dict')
 
-        # if len(params['merchant_id'])
+        if 'merchant_id' not in params:
+            raise MissArgumentError('merchant_id key must be set')
 
         return self._post(self.URL + endpoint, params)
 
@@ -93,7 +94,7 @@ class ClientPaymentSDK:
         endpoint = '/status'
 
         if not isinstance(params, dict):
-            raise ValueError('passed value must be dict')
+            raise PassedTypeError('passed value must be dict')
 
         return self._get(self.URL + endpoint, params)
 
@@ -115,7 +116,7 @@ class ClientPaymentSDK:
         endpoint = '/balance'
 
         if not isinstance(params, dict):
-            raise ValueError('passed value must be dict')
+            raise PassedTypeError('passed value must be dict')
 
         return self._get(self.URL + endpoint, params)
 
@@ -137,7 +138,7 @@ class ClientPaymentSDK:
         endpoint = '/withdrawal_request'
 
         if not isinstance(params, dict):
-            raise ValueError('passed value must be dict')
+            raise PassedTypeError('passed value must be dict')
 
         return self._get(self.URL + endpoint, params)
 
@@ -159,7 +160,7 @@ class ClientPaymentSDK:
         endpoint = '/withdrawal_request'
 
         if not isinstance(params, dict):
-            raise ValueError('passed value must be dict')
+            raise PassedTypeError('passed value must be dict')
 
         return self._get(self.URL + endpoint, params)
 
@@ -181,6 +182,6 @@ class ClientPaymentSDK:
         endpoint = '/webhook_sign_debug'
 
         if not isinstance(params, dict):
-            raise ValueError('passed value must be dict')
+            raise PassedTypeError('passed value must be dict')
 
         return self._get(self.URL + endpoint, params)
