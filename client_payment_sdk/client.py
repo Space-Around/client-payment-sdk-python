@@ -81,7 +81,7 @@ class ClientPaymentSDK:
         params (dict)
 
         # Raises
-        RequestError: If request does failed
+        RequestError: If request does fail
         InternalServerError: If internal server error
 
         # Returns
@@ -102,7 +102,7 @@ class ClientPaymentSDK:
         params (dict)
 
         # Raises
-        RequestError: If request does failed
+        RequestError: If request does fail
         InternalServerError: If internal server error
 
         # Returns
@@ -123,7 +123,7 @@ class ClientPaymentSDK:
         params (dict)
 
         # Raises
-        RequestError: If request does failed
+        RequestError: If request does fail
         InternalServerError: If internal server error
 
         # Returns
@@ -144,7 +144,7 @@ class ClientPaymentSDK:
         params (dict)
 
         # Raises
-        RequestError: If request does failed
+        RequestError: If request does fail
         InternalServerError: If internal server error
 
         # Returns
@@ -165,7 +165,7 @@ class ClientPaymentSDK:
         params (dict)
 
         # Raises
-        RequestError: If request does failed
+        RequestError: If request does fail
         InternalServerError: If internal server error
 
         # Returns
