@@ -62,6 +62,7 @@ class ClientPaymentSDK:
         # Raises
         RequestError: If request does fail
         InternalServerError: If internal server error
+        ValueError: If passed value does not dict
 
         # Returns
         str | dict
@@ -83,6 +84,7 @@ class ClientPaymentSDK:
         # Raises
         RequestError: If request does fail
         InternalServerError: If internal server error
+        ValueError: If passed value does not dict
 
         # Returns
         str | dict
@@ -104,6 +106,7 @@ class ClientPaymentSDK:
         # Raises
         RequestError: If request does fail
         InternalServerError: If internal server error
+        ValueError: If passed value does not dict
 
         # Returns
         str | dict
@@ -125,6 +128,7 @@ class ClientPaymentSDK:
         # Raises
         RequestError: If request does fail
         InternalServerError: If internal server error
+        ValueError: If passed value does not dict
 
         # Returns
         str | dict
@@ -146,6 +150,7 @@ class ClientPaymentSDK:
         # Raises
         RequestError: If request does fail
         InternalServerError: If internal server error
+        ValueError: If passed value does not dict
 
         # Returns
         str | dicts
@@ -167,6 +172,7 @@ class ClientPaymentSDK:
         # Raises
         RequestError: If request does fail
         InternalServerError: If internal server error
+        ValueError: If passed value does not dict
 
         # Returns
         str | dicts
