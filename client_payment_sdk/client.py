@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import requests
-from .exceptions import PaymentError
+from .exceptions import RequestPaymentError
 
 
 class ClientPaymentSDK:
@@ -25,14 +25,14 @@ class ClientPaymentSDK:
                 response = requests.post(url, data, headers=headers)
 
             if response.status_code != 200:
-                raise PaymentError(f'Server not available: {response.status_code}')
+                raise RequestPaymentError(f'Server not available: {response.status_code}')
 
             if response.headers['Content-Type'].find('application/json') != -1:
                 return response.json()
             else:
                 return response.content.decode('utf-8')
         except requests.ConnectionError as error:
-            raise PaymentError(error)
+            raise RequestPaymentError(error)
 
     def _get(self, url, data=None):
         return self._request(url, 'get', data)
@@ -48,7 +48,7 @@ class ClientPaymentSDK:
         params (dict)
 
         # Raises
-        PaymentError: If request does failed
+        RequestPaymentError: If request does failed
 
         # Returns
         str | dict
@@ -65,7 +65,7 @@ class ClientPaymentSDK:
         params (dict)
 
         # Raises
-        PaymentError: If request does failed
+        RequestPaymentError: If request does failed
 
         # Returns
         str | dict
@@ -82,7 +82,7 @@ class ClientPaymentSDK:
         params (dict)
 
         # Raises
-        PaymentError: If request does failed
+        RequestPaymentError: If request does failed
 
         # Returns
         str | dict
@@ -99,7 +99,7 @@ class ClientPaymentSDK:
         params (dict)
 
         # Raises
-        PaymentError: If request does failed
+        RequestPaymentError: If request does failed
 
         # Returns
         str | dict
@@ -116,11 +116,28 @@ class ClientPaymentSDK:
         params (dict)
 
         # Raises
-        PaymentError: If request does failed
+        RequestPaymentError: If request does failed
 
         # Returns
         str | dicts
         """
         endpoint = '/withdrawal_request'
+
+        return self._get(self.URL + endpoint, params)
+
+    def webhook_sign_debug(self, params):
+        """
+        Debug Webhook Sign
+
+        # Arguments
+        params (dict)
+
+        # Raises
+        RequestPaymentError: If request does failed
+
+        # Returns
+        str | dicts
+        """
+        endpoint = '/webhook_sign_debug'
 
         return self._get(self.URL + endpoint, params)
