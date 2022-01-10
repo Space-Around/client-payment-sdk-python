@@ -121,4 +121,6 @@ class ClientPaymentSDK:
         # Returns
         str | dicts
         """
-        pass
+        endpoint = '/withdrawal_request'
+
+        return self._get(self.URL + endpoint, params)
