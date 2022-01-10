@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import requests
-from .exceptions import RequestPaymentError
+from .exceptions import RequestError, InternalServerError
 
 
 class ClientPaymentSDK:
@@ -24,15 +24,27 @@ class ClientPaymentSDK:
             else:
                 response = requests.post(url, data, headers=headers)
 
-            if response.status_code != 200:
-                raise RequestPaymentError(f'Server not available: {response.status_code}')
+            if response.status_code == 400:
+                error = response.json()
+                code = ['code']
+                message = error['message']
+
+                raise RequestError(f'error code: {code}, message: {message}')
+            elif response.status_code == 500:
+                error = response.json()
+                code = error['code']
+                message = error['message']
+
+                raise InternalServerError(f'error code: {code}, message: {message}')
+            elif response.status_code != 200:
+                raise RequestError(f'Server not available: {response.status_code}')
 
             if response.headers['Content-Type'].find('application/json') != -1:
                 return response.json()
             else:
                 return response.content.decode('utf-8')
         except requests.ConnectionError as error:
-            raise RequestPaymentError(error)
+            raise RequestError(error)
 
     def _get(self, url, data=None):
         return self._request(url, 'get', data)
