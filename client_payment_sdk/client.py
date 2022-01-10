@@ -3,7 +3,7 @@ import requests
 from .exceptions import PaymentError
 
 
-class ClientPaymentSDK(object):
+class ClientPaymentSDK:
     """
     ClientPaymentSDK Class
     """
@@ -45,11 +45,13 @@ class ClientPaymentSDK(object):
         Payment Initiation
 
         # Arguments
+        params (dict)
 
         # Raises
+        PaymentError: If request does failed
 
         # Returns
-
+        str | dict
         """
         endpoint = '/init'
 
@@ -57,14 +59,16 @@ class ClientPaymentSDK(object):
 
     def status(self, params):
         """
-        Payment Initiation
+        Get Payment Status
 
         # Arguments
+        params (dict)
 
         # Raises
+        PaymentError: If request does failed
 
         # Returns
-
+        str | dict
         """
         endpoint = '/status'
 
@@ -72,14 +76,16 @@ class ClientPaymentSDK(object):
 
     def balance(self, params):
         """
-        Payment Initiation
+        Get Merchant Balance
 
         # Arguments
+        params (dict)
 
         # Raises
+        PaymentError: If request does failed
 
         # Returns
-
+        str | dict
         """
         endpoint = '/balance'
 
@@ -87,28 +93,32 @@ class ClientPaymentSDK(object):
 
     def withdrawal(self, params):
         """
-        Payment Initiation
+        Withdrawal Initiation
 
         # Arguments
+        params (dict)
 
         # Raises
+        PaymentError: If request does failed
 
         # Returns
-
+        str | dict
         """
         endpoint = '/withdrawal_request'
-        
+
         return self._get(self.URL + endpoint, params)
 
-    def refund_status(self, params):
+    def withdrawal_status(self, params):
         """
-        Payment Initiation
+        Get Withdrawal Status
 
         # Arguments
+        params (dict)
 
         # Raises
+        PaymentError: If request does failed
 
         # Returns
-
+        str | dicts
         """
         pass
