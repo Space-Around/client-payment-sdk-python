@@ -68,6 +68,9 @@ class ClientPaymentSDK:
         """
         endpoint = '/init'
 
+        if not isinstance(params, dict):
+            raise ValueError('passed value must be dict')
+
         return self._post(self.URL + endpoint, params)
 
     def status(self, params):
@@ -85,6 +88,9 @@ class ClientPaymentSDK:
         str | dict
         """
         endpoint = '/status'
+
+        if not isinstance(params, dict):
+            raise ValueError('passed value must be dict')
 
         return self._get(self.URL + endpoint, params)
 
@@ -104,6 +110,9 @@ class ClientPaymentSDK:
         """
         endpoint = '/balance'
 
+        if not isinstance(params, dict):
+            raise ValueError('passed value must be dict')
+
         return self._get(self.URL + endpoint, params)
 
     def withdrawal(self, params):
@@ -121,6 +130,9 @@ class ClientPaymentSDK:
         str | dict
         """
         endpoint = '/withdrawal_request'
+
+        if not isinstance(params, dict):
+            raise ValueError('passed value must be dict')
 
         return self._get(self.URL + endpoint, params)
 
@@ -140,6 +152,9 @@ class ClientPaymentSDK:
         """
         endpoint = '/withdrawal_request'
 
+        if not isinstance(params, dict):
+            raise ValueError('passed value must be dict')
+
         return self._get(self.URL + endpoint, params)
 
     def webhook_sign_debug(self, params):
@@ -157,5 +172,8 @@ class ClientPaymentSDK:
         str | dicts
         """
         endpoint = '/webhook_sign_debug'
+
+        if not isinstance(params, dict):
+            raise ValueError('passed value must be dict')
 
         return self._get(self.URL + endpoint, params)
