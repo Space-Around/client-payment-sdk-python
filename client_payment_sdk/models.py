@@ -22,14 +22,16 @@ class InitPaymentResponse(Model, ABC):
 
     @classmethod
     def from_dict(cls, init_payment_dict):
-        keys = ('status', 'payment_redirect_url', 'url', 'form_data')
+        return cls(status=init_payment_dict['status'], url=init_payment_dict['url'])
 
-        for key in keys:
-            if key not in init_payment_dict:
-                init_payment_dict[key] = None
+    @classmethod
+    def from_dict_sbp(cls, init_payment_dict):
+        return cls(status=init_payment_dict['status'], payment_redirect_url=init_payment_dict['payment_redirect_url'])
 
-        return cls(init_payment_dict['status'], init_payment_dict['payment_redirect_url'], init_payment_dict['url'],
-                   init_payment_dict['form_data'])
+    @classmethod
+    def from_dict_h2h(cls, init_payment_dict):
+        return cls(status=init_payment_dict['status'], url=init_payment_dict['url'],
+                   payment_redirect_url=init_payment_dict['payment_redirect_url'])
 
     def to_dict(self):
         pass

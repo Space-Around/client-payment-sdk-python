@@ -69,7 +69,12 @@ class ClientPaymentSDK:
         if response['status'] == 'error':
             raise RequestError(response)
 
-        return InitPaymentResponse.from_dict(response)
+        if 'payment_redirect_url' in response:
+            return InitPaymentResponse.from_dict_sbp(response)
+        elif 'form_data' in response:
+            return InitPaymentResponse.from_dict_h2h(response)
+        else:
+            return InitPaymentResponse.from_dict(response)
 
     def status(self, params):
         """
