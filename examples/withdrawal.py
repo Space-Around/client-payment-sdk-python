@@ -11,7 +11,7 @@ params = {
 
 params['signature'] = sign('/withdrawal_request', 'GET', params, api_secret)
 
-client = ClientPaymentSDK(None, api_secret)
+client = ClientPaymentSDK()
 result = client.withdrawal(params)
 
 print(result)

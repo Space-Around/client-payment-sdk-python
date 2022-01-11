@@ -11,7 +11,7 @@ params = {
 
 params['signature'] = sign('/status', 'GET', params, api_secret)
 
-client = ClientPaymentSDK(None, api_secret)
+client = ClientPaymentSDK()
 result = client.status(params)
 
 print(result)

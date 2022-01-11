@@ -22,7 +22,7 @@ params = {'amount': '100',
 
 params['signature'] = sign('/init', 'GET', params, api_secret)
 
-client = ClientPaymentSDK(None, api_secret)
+client = ClientPaymentSDK()
 result = client.init(params)
 
 print(result)

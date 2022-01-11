@@ -15,7 +15,7 @@ params = {
 
 params['signature'] = sign('/init', 'POST', params, api_secret)
 
-client = ClientPaymentSDK(None, api_secret)
-json = client.init(params)
+client = ClientPaymentSDK()
+result = client.init(params)
 
-print(json)
+print(result)

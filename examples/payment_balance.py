@@ -7,7 +7,7 @@ params = {'merchant_id': '13'}
 
 params['signature'] = sign('/balance', 'GET', params, api_secret)
 
-client = ClientPaymentSDK(None, api_secret)
+client = ClientPaymentSDK()
 result = client.balance(params)
 
 print(result)
