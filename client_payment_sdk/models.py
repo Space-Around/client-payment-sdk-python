@@ -23,6 +23,9 @@ class InitPaymentResponse(Model, ABC):
     def from_dict(cls, init_payment_dict):
         pass
 
+    def to_dict(self):
+        pass
+
 
 class NotificationPaymentResponse(Model, ABC):
     pass
@@ -40,6 +43,10 @@ class StatusPaymentResponse(Model, ABC):
     def from_dict(cls, init_payment_dict):
         pass
 
+    def to_dict(self):
+        pass
+
+
 class BalanceResponse(Model, ABC):
     def __init__(self, status, balance):
         self.status = status
@@ -47,6 +54,9 @@ class BalanceResponse(Model, ABC):
 
     @classmethod
     def from_dict(cls, init_payment_dict):
+        pass
+
+    def to_dict(self):
         pass
 
 
@@ -59,6 +69,9 @@ class WithdrawalResponse(Model, ABC):
     def from_dict(cls, init_payment_dict):
         pass
 
+    def to_dict(self):
+        pass
+
 
 class StatusWithdrawalResponse(Model, ABC):
     def __init__(self, status, withdrawal_request):
@@ -67,6 +80,9 @@ class StatusWithdrawalResponse(Model, ABC):
 
     @classmethod
     def from_dict(cls, init_payment_dict):
+        pass
+
+    def to_dict(self):
         pass
 
 
@@ -84,4 +100,7 @@ class WebhookDebugResponse(Model, ABC):
 
     @classmethod
     def from_dict(cls, init_payment_dict):
+        pass
+
+    def to_dict(self):
         pass
