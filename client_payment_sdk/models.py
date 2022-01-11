@@ -7,32 +7,52 @@ class Model:
 
 
 class InitPaymentResponse(Model):
-    pass
+    def __init__(self):
+        self._status = None
+        self._payment_redirect_url = None
+        self._url = None
+        self._form_data = None
 
 
 class NotificationPaymentResponse(Model):
     pass
 
 
-class StatusResponse(Model):
-    pass
+class StatusPaymentResponse(Model):
+    def __init__(self):
+        self._status = None
+        self._payment_status = None
+        self._refund_status = None
+        self._last_payment_error_code = None
+        self._last_payment_error = None
 
 
 class BalanceResponse(Model):
-    pass
-
-
-class StatusPaymentResponse(Model):
-    pass
+    def __init__(self):
+        self._status = None
+        self._balance = None
 
 
 class WithdrawalResponse(Model):
-    pass
+    def __init__(self):
+        self._status = None
+        self._withdrawal_request = None
 
 
 class StatusWithdrawalResponse(Model):
-    pass
+    def __init__(self):
+        self._status = None
+        self._withdrawal_request = None
 
 
 class NotificationWithdrawalResponse(Model):
     pass
+
+
+class WebhookDebugResponse(Model):
+    def __init__(self):
+        self._status = None
+        self._url = None
+        self._method = None
+        self._signature = None
+        self._params = None
