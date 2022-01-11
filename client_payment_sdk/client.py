@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import requests
 from .exceptions import RequestError, InternalServerError, MissArgumentError, PassedTypeError
-
+from .models import InitPaymentResponse, NotificationPaymentResponse, StatusPaymentResponse, BalanceResponse, \
+    WithdrawalResponse, StatusWithdrawalResponse, NotificationWithdrawalResponse, WebhookDebugResponse
 
 class ClientPaymentSDK:
     """
@@ -63,10 +64,9 @@ class ClientPaymentSDK:
         if not isinstance(params, dict):
             raise PassedTypeError('passed value must be dict')
 
-        # if 'merchant_id' not in params:
-        #     raise MissArgumentError('merchant_id key must be set')
+        response = self._post(self.URL + endpoint, params)
 
-        return self._post(self.URL + endpoint, params)
+        return InitPaymentResponse.from_dict(response)
 
     def status(self, params):
         """
