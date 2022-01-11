@@ -9,15 +9,7 @@ class ClientPaymentSDK:
     """
     URL = 'https://sbank.gogo.vc'
 
-    def __init__(self, public_id, api_secret):
-        self._public_id = public_id
-        self._api_secret = api_secret
-
-    def _request(self, url, method, data=None, request_id=None):
-        headers = None
-        if request_id is not None:
-            headers = {'X-Request-ID': request_id}
-
+    def _request(self, url, method, data=None, headers=None):
         try:
             if method == 'get':
                 response = requests.get(url, params=data, headers=headers)
@@ -71,8 +63,8 @@ class ClientPaymentSDK:
         if not isinstance(params, dict):
             raise PassedTypeError('passed value must be dict')
 
-        if 'merchant_id' not in params:
-            raise MissArgumentError('merchant_id key must be set')
+        # if 'merchant_id' not in params:
+        #     raise MissArgumentError('merchant_id key must be set')
 
         return self._post(self.URL + endpoint, params)
 
