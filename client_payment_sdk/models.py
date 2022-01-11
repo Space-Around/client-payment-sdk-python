@@ -13,7 +13,7 @@ class Model(ABC):
 
 
 class InitPaymentResponse(Model, ABC):
-    def __init__(self, status, payment_redirect_url, url, form_data):
+    def __init__(self, status=None, payment_redirect_url=None, url=None, form_data=None):
         super(InitPaymentResponse, self).__init__()
         self.status = status
         self.payment_redirect_url = payment_redirect_url
@@ -22,6 +22,12 @@ class InitPaymentResponse(Model, ABC):
 
     @classmethod
     def from_dict(cls, init_payment_dict):
+        keys = ('status', 'payment_redirect_url', 'url', 'form_data')
+
+        for key in keys:
+            if key not in init_payment_dict:
+                init_payment_dict[key] = None
+
         return cls(init_payment_dict['status'], init_payment_dict['payment_redirect_url'], init_payment_dict['url'],
                    init_payment_dict['form_data'])
 

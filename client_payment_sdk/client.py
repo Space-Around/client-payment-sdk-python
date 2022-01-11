@@ -66,6 +66,9 @@ class ClientPaymentSDK:
 
         response = self._post(self.URL + endpoint, params)
 
+        if response['status'] == 'error':
+            raise RequestError(response)
+
         return InitPaymentResponse.from_dict(response)
 
     def status(self, params):
