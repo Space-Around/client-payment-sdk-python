@@ -31,7 +31,7 @@ class InitPaymentResponse(Model, ABC):
     @classmethod
     def from_dict_h2h(cls, init_payment_dict):
         return cls(status=init_payment_dict['status'], url=init_payment_dict['url'],
-                   payment_redirect_url=init_payment_dict['payment_redirect_url'])
+                   form_data=init_payment_dict['form_data'])
 
     def to_dict(self):
         pass
