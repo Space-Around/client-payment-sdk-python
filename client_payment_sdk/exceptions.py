@@ -16,5 +16,5 @@ class InternalServerError(ClientPaymentSDKError):
     pass
 
 
-class MissArgumentError(ClientPaymentSDKError, ValueError):
+class SignatureVerificationError(ClientPaymentSDKError):
     pass

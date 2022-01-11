@@ -3,13 +3,13 @@ from client_payment_sdk import ClientPaymentSDK, sign
 
 api_secret = 'aa21444f3f71'
 params = {
-    'amount': '90',
+    'amount': '50',
     'merchant_id': '15',
-    'order': '067dbec6-719c-11ec-9e37-0242ac130040',
+    'order': '067dbec6-719c-11ec-9e37-0242ac130165',
     'pan': '4111111111111111'
 }
 
-params['signature'] = sign('/withdrawal_request', 'GET', params, api_secret)
+params['signature'] = sign('/withdrawal_request', 'POST', params, api_secret)
 
 client = ClientPaymentSDK()
 result = client.withdrawal(params)

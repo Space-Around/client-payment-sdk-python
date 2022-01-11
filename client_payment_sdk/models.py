@@ -38,7 +38,41 @@ class InitPaymentResponse(Model, ABC):
 
 
 class NotificationPaymentResponse(Model, ABC):
-    pass
+    def __init__(self, webhook_type, invoice_id, amount, customer_fee, order, merchant_id, product_id, status,
+                 currency, webhook_id, payment_error_code, payment_error, signature):
+        super(NotificationPaymentResponse, self).__init__()
+        self.webhook_type = webhook_type
+        self.invoice_id = invoice_id
+        self.amount = amount
+        self.customer_fee = customer_fee
+        self.order = order
+        self.merchant_id = merchant_id
+        self.product_id = product_id
+        self.status = status
+        self.currency = currency
+        self.webhook_id = webhook_id
+        self.payment_error_code = payment_error_code
+        self.payment_error = payment_error
+        self.signature = signature
+
+    @classmethod
+    def from_dict(cls, notification_payment_dict):
+        return cls(notification_payment_dict['webhook_type'],
+                   notification_payment_dict['invoice_id'],
+                   notification_payment_dict['amount'],
+                   notification_payment_dict['customer_fee'],
+                   notification_payment_dict['order'],
+                   notification_payment_dict['merchant_id'],
+                   notification_payment_dict['product_id'],
+                   notification_payment_dict['status'],
+                   notification_payment_dict['currency'],
+                   notification_payment_dict['webhook_id'],
+                   notification_payment_dict['payment_error_code'],
+                   notification_payment_dict['payment_error'],
+                   notification_payment_dict['signature'])
+
+    def to_dict(self):
+        pass
 
 
 class StatusPaymentResponse(Model, ABC):

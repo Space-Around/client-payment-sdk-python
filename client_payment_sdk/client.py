@@ -65,7 +65,7 @@ class ClientPaymentSDK:
             raise PassedTypeError('passed value must be dict')
 
         response = self._post(self.URL + endpoint, params)
-
+        print(response)
         if response['status'] == 'error':
             raise RequestError(response)
 
@@ -150,7 +150,12 @@ class ClientPaymentSDK:
         if not isinstance(params, dict):
             raise PassedTypeError('passed value must be dict')
 
-        return self._get(self.URL + endpoint, params)
+        response = self._post(self.URL + endpoint, params)
+
+        if response['status'] == 'error':
+            raise RequestError(response)
+
+        return WithdrawalResponse.from_dict(response)
 
     def withdrawal_status(self, params):
         """
