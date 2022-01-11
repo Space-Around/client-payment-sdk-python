@@ -19,6 +19,10 @@ class InitPaymentResponse(Model, ABC):
         self.url = url
         self.form_data = form_data
 
+    @classmethod
+    def from_dict(cls, init_payment_dict):
+        pass
+
 
 class NotificationPaymentResponse(Model, ABC):
     pass
@@ -32,11 +36,18 @@ class StatusPaymentResponse(Model, ABC):
         self.last_payment_error_code = last_payment_error_code
         self.last_payment_error = last_payment_error
 
+    @classmethod
+    def from_dict(cls, init_payment_dict):
+        pass
 
 class BalanceResponse(Model, ABC):
     def __init__(self, status, balance):
         self.status = status
         self.balance = balance
+
+    @classmethod
+    def from_dict(cls, init_payment_dict):
+        pass
 
 
 class WithdrawalResponse(Model, ABC):
@@ -44,11 +55,19 @@ class WithdrawalResponse(Model, ABC):
         self.status = status
         self.withdrawal_request = withdrawal_request
 
+    @classmethod
+    def from_dict(cls, init_payment_dict):
+        pass
+
 
 class StatusWithdrawalResponse(Model, ABC):
     def __init__(self, status, withdrawal_request):
         self.status = status
         self.withdrawal_request = withdrawal_request
+
+    @classmethod
+    def from_dict(cls, init_payment_dict):
+        pass
 
 
 class NotificationWithdrawalResponse(Model, ABC):
@@ -57,8 +76,12 @@ class NotificationWithdrawalResponse(Model, ABC):
 
 class WebhookDebugResponse(Model, ABC):
     def __init__(self, status, url, method, signature, params):
-        self.status = None
-        self.url = None
-        self.method = None
-        self.signature = None
-        self.params = None
+        self.status = status
+        self.url = url
+        self.method = method
+        self.signature = signature
+        self.params = params
+
+    @classmethod
+    def from_dict(cls, init_payment_dict):
+        pass
