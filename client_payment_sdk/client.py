@@ -96,7 +96,12 @@ class ClientPaymentSDK:
         if not isinstance(params, dict):
             raise PassedTypeError('passed value must be dict')
 
-        return self._get(self.URL + endpoint, params)
+        response = self._get(self.URL + endpoint, params)
+
+        if response['status'] == 'error':
+            raise RequestError(response)
+
+        return StatusPaymentResponse.from_dict(response)
 
     def balance(self, params):
         """
@@ -118,7 +123,12 @@ class ClientPaymentSDK:
         if not isinstance(params, dict):
             raise PassedTypeError('passed value must be dict')
 
-        return self._get(self.URL + endpoint, params)
+        response = self._get(self.URL + endpoint, params)
+
+        if response['status'] == 'error':
+            raise RequestError(response)
+
+        return BalanceResponse.from_dict(response)
 
     def withdrawal(self, params):
         """
