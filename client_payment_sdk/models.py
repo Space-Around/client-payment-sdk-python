@@ -13,11 +13,11 @@ class Model(ABC):
 
 
 class InitPaymentResponse(Model, ABC):
-    def __init__(self):
-        self.status = None
-        self.payment_redirect_url = None
-        self.url = None
-        self.form_data = None
+    def __init__(self, status, payment_redirect_url, url, form_data):
+        self.status = status
+        self.payment_redirect_url = payment_redirect_url
+        self.url = url
+        self.form_data = form_data
 
 
 class NotificationPaymentResponse(Model, ABC):
