@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
 class Model:
+    @classmethod
+    def from_dict(cls, model_dict):
+        raise NotImplementedError
+
     def __repr__(self):
         state = ['%s=%s' % (k, repr(v)) for (k, v) in vars(self).items()]
         return '%s(%s)' % (self.__class__.__name__, ', '.join(state))
@@ -8,10 +12,10 @@ class Model:
 
 class InitPaymentResponse(Model):
     def __init__(self):
-        self._status = None
-        self._payment_redirect_url = None
-        self._url = None
-        self._form_data = None
+        self.status = None
+        self.payment_redirect_url = None
+        self.url = None
+        self.form_data = None
 
 
 class NotificationPaymentResponse(Model):
@@ -20,29 +24,29 @@ class NotificationPaymentResponse(Model):
 
 class StatusPaymentResponse(Model):
     def __init__(self):
-        self._status = None
-        self._payment_status = None
-        self._refund_status = None
-        self._last_payment_error_code = None
-        self._last_payment_error = None
+        self.status = None
+        self.payment_status = None
+        self.refund_status = None
+        self.last_payment_error_code = None
+        self.last_payment_error = None
 
 
 class BalanceResponse(Model):
     def __init__(self):
-        self._status = None
-        self._balance = None
+        self.status = None
+        self.balance = None
 
 
 class WithdrawalResponse(Model):
     def __init__(self):
-        self._status = None
-        self._withdrawal_request = None
+        self.status = None
+        self.withdrawal_request = None
 
 
 class StatusWithdrawalResponse(Model):
     def __init__(self):
-        self._status = None
-        self._withdrawal_request = None
+        self.status = None
+        self.withdrawal_request = None
 
 
 class NotificationWithdrawalResponse(Model):
@@ -51,8 +55,8 @@ class NotificationWithdrawalResponse(Model):
 
 class WebhookDebugResponse(Model):
     def __init__(self):
-        self._status = None
-        self._url = None
-        self._method = None
-        self._signature = None
-        self._params = None
+        self.status = None
+        self.url = None
+        self.method = None
+        self.signature = None
+        self.params = None
