@@ -25,30 +25,30 @@ class NotificationPaymentResponse(Model, ABC):
 
 
 class StatusPaymentResponse(Model, ABC):
-    def __init__(self):
-        self.status = None
-        self.payment_status = None
-        self.refund_status = None
-        self.last_payment_error_code = None
-        self.last_payment_error = None
+    def __init__(self, status, payment_status, refund_status, last_payment_error_code=None, last_payment_error=None):
+        self.status = status
+        self.payment_status = payment_status
+        self.refund_status = refund_status
+        self.last_payment_error_code = last_payment_error_code
+        self.last_payment_error = last_payment_error
 
 
 class BalanceResponse(Model, ABC):
-    def __init__(self):
-        self.status = None
-        self.balance = None
+    def __init__(self, status, balance):
+        self.status = status
+        self.balance = balance
 
 
 class WithdrawalResponse(Model, ABC):
-    def __init__(self):
-        self.status = None
-        self.withdrawal_request = None
+    def __init__(self, status, withdrawal_request):
+        self.status = status
+        self.withdrawal_request = withdrawal_request
 
 
 class StatusWithdrawalResponse(Model, ABC):
-    def __init__(self):
-        self.status = None
-        self.withdrawal_request = None
+    def __init__(self, status, withdrawal_request):
+        self.status = status
+        self.withdrawal_request = withdrawal_request
 
 
 class NotificationWithdrawalResponse(Model, ABC):
@@ -56,7 +56,7 @@ class NotificationWithdrawalResponse(Model, ABC):
 
 
 class WebhookDebugResponse(Model, ABC):
-    def __init__(self):
+    def __init__(self, status, url, method, signature, params):
         self.status = None
         self.url = None
         self.method = None
