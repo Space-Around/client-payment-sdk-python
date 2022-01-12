@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import requests
-from .exceptions import RequestError, InternalServerError, MissArgumentError, PassedTypeError
-from .models import InitPaymentResponse, NotificationPaymentResponse, StatusPaymentResponse, BalanceResponse, \
-    WithdrawalResponse, StatusWithdrawalResponse, NotificationWithdrawalResponse, WebhookDebugResponse
+from .exceptions import RequestError, InternalServerError, PassedTypeError
+from .models import InitPaymentResponse, StatusPaymentResponse, BalanceResponse, \
+    WithdrawalResponse, StatusWithdrawalResponse, WebhookDebugResponse
 
 class ClientPaymentSDK:
     """

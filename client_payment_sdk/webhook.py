@@ -1,21 +1,18 @@
 from .sign import sign
-from .models import NotificationPaymentResponse, NotificationWithdrawalResponse
-from .exceptions import SignatureVerificationError
-from copy import deepcopy
+from .models import WebhookData
+from .exceptions import SignatureVerificationError, PassedTypeError
 
 
 class Webhook:
-    def __init__(self, data, api_secret):
-        self._data = data
-        self._api_secret = api_secret
+    @staticmethod
+    def verify_signature(endpoint, method, data, secret):
+        if not isinstance(data, WebhookData):
+            raise PassedTypeError('data must be WebhookData')
 
-    def verify_signature(self):
-        endpoint = ''
-        method = 'POST'
-        payload = deepcopy(self._data)
-        del payload
+        payload = data.params['payload'][method.upper()]
 
-        if sign(endpoint, method, payload, self._api_secret) != self._data['signature']:
-            raise SignatureVerificationError(' signatures not match')
+        if sign(endpoint, method, payload, secret) != data.signature:
+            raise SignatureVerificationError('signatures not match')
 
         return True
+

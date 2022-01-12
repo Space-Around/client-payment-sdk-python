@@ -10,11 +10,10 @@ def sign(endpoint, method, payload, secret):
 
     sorted_param = dict(sorted(payload.items(), key=lambda x: x[0]))
 
-    if method == 'POST':
-        payload_dict = {'PATH': endpoint, 'POST': sorted_param}
-    else:
-        # TODO: add raise if not method get
-        payload_dict = {'PATH': endpoint, 'GET': sorted_param}
+    for key in sorted_param:
+        sorted_param[key] = str(sorted_param[key])
+
+    payload_dict = {'PATH': endpoint, method.upper(): sorted_param}
 
     payload_str = dict_to_str(payload_dict)
 

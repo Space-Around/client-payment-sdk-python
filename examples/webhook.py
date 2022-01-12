@@ -1,4 +1,4 @@
-from client_payment_sdk import Webhook, SignatureVerificationError
+from client_payment_sdk import Webhook, WebhookData, SignatureVerificationError
 from flask import Flask, request
 import os
 
@@ -12,13 +12,11 @@ def webhooks():
     payload = request.data.decode("utf-8")
 
     try:
-        # wh = Webhook(payload, api_secret)
-        # wh.verify_signature()
-        # notification = wh.to_class()
+        data = WebhookData(payload)
 
-        notification = Webhook.verify_signature(payload, api_secret)
+        Webhook.verify_signature('', 'POST', data, api_secret)
 
-        # usage notification
+        # usage data
     except ValueError:
         print("Error while decoding event!")
         return "Bad payload", 400

@@ -6,8 +6,9 @@
 # ClientPaymentSDK
 from .client import ClientPaymentSDK
 from .sign import sign
-from .exceptions import ClientPaymentSDKError, RequestError, InternalServerError, SignatureVerificationError, PassedTypeError
+from .exceptions import ClientPaymentSDKError, RequestError, InternalServerError, SignatureVerificationError,\
+    PassedTypeError
 from .utils import dict_to_str
-from .models import InitPaymentResponse, NotificationPaymentResponse, StatusPaymentResponse, BalanceResponse, \
-    WithdrawalResponse, StatusWithdrawalResponse, NotificationWithdrawalResponse, WebhookDebugResponse
-from .webhook import Webhook
+from .models import InitPaymentResponse, StatusPaymentResponse, BalanceResponse, \
+    WithdrawalResponse, StatusWithdrawalResponse, WebhookDebugResponse
+from .webhook import Webhook, WebhookData
