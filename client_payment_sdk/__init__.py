@@ -9,6 +9,6 @@ from .sign import sign
 from .exceptions import ClientPaymentSDKError, RequestError, InternalServerError, SignatureVerificationError,\
     PassedTypeError
 from .utils import dict_to_str
-from .models import InitPaymentResponse, StatusPaymentResponse, BalanceResponse, \
-    WithdrawalResponse, StatusWithdrawalResponse, WebhookDebugResponse
+from .models import InitPaymentResponse, StatusPaymentResponse, BalanceResponse, WithdrawalResponse, \
+    StatusWithdrawalResponse
 from .webhook import Webhook, WebhookData

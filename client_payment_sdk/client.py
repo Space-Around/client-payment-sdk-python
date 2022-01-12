@@ -2,7 +2,7 @@
 import requests
 from .exceptions import RequestError, InternalServerError, PassedTypeError
 from .models import InitPaymentResponse, StatusPaymentResponse, BalanceResponse, \
-    WithdrawalResponse, StatusWithdrawalResponse, WebhookDebugResponse
+    WithdrawalResponse, StatusWithdrawalResponse
 
 class ClientPaymentSDK:
     """
@@ -65,16 +65,11 @@ class ClientPaymentSDK:
             raise PassedTypeError('passed value must be dict')
 
         response = self._post(self.URL + endpoint, params)
-        print(response)
+
         if response['status'] == 'error':
             raise RequestError(response)
 
-        if 'payment_redirect_url' in response:
-            return InitPaymentResponse.from_dict_sbp(response)
-        elif 'form_data' in response:
-            return InitPaymentResponse.from_dict_h2h(response)
-        else:
-            return InitPaymentResponse.from_dict(response)
+        return InitPaymentResponse(response)
 
     def status(self, params):
         """

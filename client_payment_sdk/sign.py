@@ -10,8 +10,8 @@ def sign(endpoint, method, payload, secret):
 
     sorted_param = dict(sorted(payload.items(), key=lambda x: x[0]))
 
-    for key in sorted_param:
-        sorted_param[key] = str(sorted_param[key])
+    for _key in sorted_param:
+        sorted_param[_key] = str(sorted_param[_key])
 
     payload_dict = {'PATH': endpoint, method.upper(): sorted_param}
 
