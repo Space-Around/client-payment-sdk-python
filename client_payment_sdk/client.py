@@ -32,6 +32,7 @@ class ClientPaymentSDK:
                 raise RequestError(f'Server not available: {response.status_code}')
 
             if response.headers['Content-Type'].find('application/json') != -1:
+                print(response.json())
                 return response.json()
             else:
                 return response.content.decode('utf-8')
@@ -66,6 +67,10 @@ class ClientPaymentSDK:
 
         response = self._post(self.URL + endpoint, params)
 
+        if 'status' not in response:
+            # TODO: create some error type for couldn't parse response
+            raise ValueError(f'Unable to parse response, response: {response}')
+
         if response['status'] == 'error':
             raise RequestError(response)
 
@@ -93,10 +98,14 @@ class ClientPaymentSDK:
 
         response = self._get(self.URL + endpoint, params)
 
+        if 'status' not in response:
+            # TODO: create some error type for couldn't parse response
+            raise ValueError(f'Unable to parse response, response: {response}')
+
         if response['status'] == 'error':
             raise RequestError(response)
 
-        return StatusPaymentResponse.from_dict(response)
+        return StatusPaymentResponse(response)
 
     def balance(self, params):
         """
@@ -120,10 +129,14 @@ class ClientPaymentSDK:
 
         response = self._get(self.URL + endpoint, params)
 
+        if 'status' not in response:
+            # TODO: create some error type for couldn't parse response
+            raise ValueError(f'Unable to parse response, response: {response}')
+
         if response['status'] == 'error':
             raise RequestError(response)
 
-        return BalanceResponse.from_dict(response)
+        return BalanceResponse(response)
 
     def withdrawal(self, params):
         """
@@ -147,10 +160,14 @@ class ClientPaymentSDK:
 
         response = self._post(self.URL + endpoint, params)
 
+        if 'status' not in response:
+            # TODO: create some error type for couldn't parse response
+            raise ValueError(f'Unable to parse response, response: {response}')
+
         if response['status'] == 'error':
             raise RequestError(response)
 
-        return WithdrawalResponse.from_dict(response)
+        return WithdrawalResponse(response)
 
     def withdrawal_status(self, params):
         """
@@ -172,7 +189,16 @@ class ClientPaymentSDK:
         if not isinstance(params, dict):
             raise PassedTypeError('passed value must be dict')
 
-        return self._get(self.URL + endpoint, params)
+        response = self._get(self.URL + endpoint, params)
+
+        if 'status' not in response:
+            # TODO: create some error type for couldn't parse response
+            raise ValueError(f'Unable to parse response, response: {response}')
+
+        if response['status'] == 'error':
+            raise RequestError(response)
+
+        return StatusWithdrawalResponse(response)
 
     def webhook_sign_debug(self, params):
         """

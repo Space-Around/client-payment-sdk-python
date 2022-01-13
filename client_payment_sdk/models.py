@@ -10,6 +10,9 @@ class Model(ABC):
         for key in data:
             if hasattr(self, key):
                 setattr(self, key, data[key])
+            else:
+                # TODO: raise some error
+                pass
 
     def __repr__(self):
         state = ['%s=%s' % (k, repr(v)) for (k, v) in vars(self).items()]

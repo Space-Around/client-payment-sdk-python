@@ -9,7 +9,11 @@ class Webhook:
         if not isinstance(data, WebhookData):
             raise PassedTypeError('data must be WebhookData')
 
-        payload = data.params['payload'][method.upper()]
+        payload = {}
+
+        for key in data:
+            if key != 'signature':
+                payload[key] = data[key]
 
         if sign(endpoint, method, payload, secret) != data.signature:
             raise SignatureVerificationError('signatures not match')
