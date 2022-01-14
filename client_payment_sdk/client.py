@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import requests
-from .exceptions import RequestError, InternalServerError, PassedTypeError
+from .exceptions import RequestError, InternalServerError, PassedTypeError, ParseResponseError
 from .models import InitPaymentResponse, StatusPaymentResponse, BalanceResponse, \
     WithdrawalResponse, StatusWithdrawalResponse
 
@@ -68,8 +68,7 @@ class ClientPaymentSDK:
         response = self._post(self.URL + endpoint, params)
 
         if 'status' not in response:
-            # TODO: create some error type for couldn't parse response
-            raise ValueError(f'Unable to parse response, response: {response}')
+            raise ParseResponseError(f'Unable to parse response, response: {response}')
 
         if response['status'] == 'error':
             raise RequestError(response)
@@ -99,8 +98,7 @@ class ClientPaymentSDK:
         response = self._get(self.URL + endpoint, params)
 
         if 'status' not in response:
-            # TODO: create some error type for couldn't parse response
-            raise ValueError(f'Unable to parse response, response: {response}')
+            raise ParseResponseError(f'Unable to parse response, response: {response}')
 
         if response['status'] == 'error':
             raise RequestError(response)
@@ -130,8 +128,7 @@ class ClientPaymentSDK:
         response = self._get(self.URL + endpoint, params)
 
         if 'status' not in response:
-            # TODO: create some error type for couldn't parse response
-            raise ValueError(f'Unable to parse response, response: {response}')
+            raise ParseResponseError(f'Unable to parse response, response: {response}')
 
         if response['status'] == 'error':
             raise RequestError(response)
@@ -161,8 +158,7 @@ class ClientPaymentSDK:
         response = self._post(self.URL + endpoint, params)
 
         if 'status' not in response:
-            # TODO: create some error type for couldn't parse response
-            raise ValueError(f'Unable to parse response, response: {response}')
+            raise ParseResponseError(f'Unable to parse response, response: {response}')
 
         if response['status'] == 'error':
             raise RequestError(response)
@@ -192,8 +188,7 @@ class ClientPaymentSDK:
         response = self._get(self.URL + endpoint, params)
 
         if 'status' not in response:
-            # TODO: create some error type for couldn't parse response
-            raise ValueError(f'Unable to parse response, response: {response}')
+            raise ParseResponseError(f'Unable to parse response, response: {response}')
 
         if response['status'] == 'error':
             raise RequestError(response)

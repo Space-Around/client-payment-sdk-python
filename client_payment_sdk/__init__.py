@@ -7,7 +7,7 @@
 from .client import ClientPaymentSDK
 from .sign import sign
 from .exceptions import ClientPaymentSDKError, RequestError, InternalServerError, SignatureVerificationError,\
-    PassedTypeError
+    PassedTypeError, MatchKeyError, ParseResponseError
 from .utils import dict_to_str
 from .models import InitPaymentResponse, StatusPaymentResponse, BalanceResponse, WithdrawalResponse, \
     StatusWithdrawalResponse

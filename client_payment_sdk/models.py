@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from abc import ABC
-
+from .exceptions import MatchKeyError, ParseResponseError
 
 class Model:
     def __init__(self, data):
@@ -13,8 +13,7 @@ class Model:
                 setattr(self, key, data[key])
                 self.__dict__[key] = data[key]
             else:
-                # TODO: raise some error
-                pass
+                raise MatchKeyError(f'invalid key: {key}, read docs')
 
     def to_dict(self):
         return self.__dict__

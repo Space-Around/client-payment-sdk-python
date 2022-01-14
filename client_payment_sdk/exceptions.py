@@ -16,5 +16,13 @@ class InternalServerError(ClientPaymentSDKError):
     pass
 
 
+class MatchKeyError(ClientPaymentSDKError):
+    pass
+
+
 class SignatureVerificationError(ClientPaymentSDKError):
+    pass
+
+
+class ParseResponseError(ClientPaymentSDKError):
     pass
