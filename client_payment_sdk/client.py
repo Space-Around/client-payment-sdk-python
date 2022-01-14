@@ -55,10 +55,11 @@ class ClientPaymentSDK:
         # Raises
         RequestError: If request does fail
         InternalServerError: If internal server error
-        ValueError: If passed value does not dict
+        PassedTypeError: If passed value does not dict
+        ParseResponseError: If response not suite for class structure
 
         # Returns
-        str | dict
+        InitPaymentResponse
         """
         endpoint = '/init'
 
@@ -85,10 +86,11 @@ class ClientPaymentSDK:
         # Raises
         RequestError: If request does fail
         InternalServerError: If internal server error
-        ValueError: If passed value does not dict
+        PassedTypeError: If passed value does not dict
+        ParseResponseError: If response not suite for class structure
 
         # Returns
-        str | dict
+        StatusPaymentResponse
         """
         endpoint = '/status'
 
@@ -115,10 +117,11 @@ class ClientPaymentSDK:
         # Raises
         RequestError: If request does fail
         InternalServerError: If internal server error
-        ValueError: If passed value does not dict
+        PassedTypeError: If passed value does not dict
+        ParseResponseError: If response not suite for class structure
 
         # Returns
-        str | dict
+        BalanceResponse
         """
         endpoint = '/balance'
 
@@ -145,10 +148,11 @@ class ClientPaymentSDK:
         # Raises
         RequestError: If request does fail
         InternalServerError: If internal server error
-        ValueError: If passed value does not dict
+        PassedTypeError: If passed value does not dict
+        ParseResponseError: If response not suite for class structure
 
         # Returns
-        str | dict
+        WithdrawalResponse
         """
         endpoint = '/withdrawal_request'
 
@@ -175,10 +179,11 @@ class ClientPaymentSDK:
         # Raises
         RequestError: If request does fail
         InternalServerError: If internal server error
-        ValueError: If passed value does not dict
+        PassedTypeError: If passed value does not dict
+        ParseResponseError: If response not suite for class structure
 
         # Returns
-        str | dicts
+        StatusWithdrawalResponse
         """
         endpoint = '/withdrawal_request'
 
@@ -194,25 +199,3 @@ class ClientPaymentSDK:
             raise RequestError(response)
 
         return StatusWithdrawalResponse(response)
-
-    def webhook_sign_debug(self, params):
-        """
-        Debug Webhook Sign
-
-        # Arguments
-        params (dict)
-
-        # Raises
-        RequestError: If request does fail
-        InternalServerError: If internal server error
-        ValueError: If passed value does not dict
-
-        # Returns
-        str | dicts
-        """
-        endpoint = '/webhook_sign_debug'
-
-        if not isinstance(params, dict):
-            raise PassedTypeError('passed value must be dict')
-
-        return self._get(self.URL + endpoint, params)
