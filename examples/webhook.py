@@ -9,23 +9,20 @@ api_secret = 'aa21444f3f71'
 
 @app.route("/webhooks", methods=["POST", "GET"])
 def webhooks():
-    payload = request.data.decode("utf-8")
-    print(f'request: {request}')
-    print(f'payload: {payload}')
-    # try:
-    #     data = WebhookData(payload)
-    #
-    #     Webhook.verify_signature('', 'POST', data, api_secret)
-    #     print('webhook')
-    #     # usage data
-    # except ValueError:
-    #     print("Error while decoding event!")
-    #     return "Bad payload", 400
-    # except SignatureVerificationError:
-    #     print("Invalid signature!")
-    #     return "Bad signature", 400
-    #
-    # return "", 200
+    payload = request.form.to_dict()
+    try:
+        data = WebhookData(payload)
+
+        Webhook.verify_signature('/webhooks', 'POST', data, api_secret)
+        # usage data
+    except ValueError:
+        print("Error while decoding event!")
+        return "Bad payload", 400
+    except SignatureVerificationError:
+        print("Invalid signature!")
+        return "Bad signature", 400
+
+    return "", 200
 
 
 if __name__ == "__main__":

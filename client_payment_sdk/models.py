@@ -2,21 +2,22 @@
 from abc import ABC
 
 
-class Model(ABC):
+class Model:
     def __init__(self, data):
         for key in self.__slots__:
             setattr(self, key, None)
+            self.__dict__[key] = None
 
         for key in data:
             if hasattr(self, key):
                 setattr(self, key, data[key])
+                self.__dict__[key] = data[key]
             else:
                 # TODO: raise some error
                 pass
 
-    def __repr__(self):
-        state = ['%s=%s' % (k, repr(v)) for (k, v) in vars(self).items()]
-        return '%s(%s)' % (self.__class__.__name__, ', '.join(state))
+    def to_dict(self):
+        return self.__dict__
 
 
 class InitPaymentResponse(Model):
@@ -78,3 +79,8 @@ class WebhookData(Model):
         'customer_fee',
         'masked_pan'
     )
+
+    # def __init__(self, data):
+    #     # Model.__init__(self, data)
+    #     super(WebhookData, self).__init__(data)
+    #     print(self.__dict__)
