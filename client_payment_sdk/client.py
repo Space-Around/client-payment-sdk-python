@@ -4,6 +4,7 @@ from .exceptions import RequestError, InternalServerError, PassedTypeError, Pars
 from .models import InitPaymentResponse, StatusPaymentResponse, BalanceResponse, \
     WithdrawalResponse, StatusWithdrawalResponse
 
+
 class ClientPaymentSDK:
     """
     ClientPaymentSDK Class
@@ -32,7 +33,6 @@ class ClientPaymentSDK:
                 raise RequestError(f'Server not available: {response.status_code}')
 
             if response.headers['Content-Type'].find('application/json') != -1:
-                print(response.json())
                 return response.json()
             else:
                 return response.content.decode('utf-8')
