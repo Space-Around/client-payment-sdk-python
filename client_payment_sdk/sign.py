@@ -8,10 +8,11 @@ def sign(endpoint, method, payload, secret):
 
     key = jwk.JWK.from_password(secret)
 
-    sorted_param = dict(sorted(payload.items(), key=lambda x: x[0]))
+    # clear dict from empty rows and None
+    clear_payload = {k: v for k, v in payload.items() if (isinstance(v, str) and len(v) > 0) or v is not None}
 
-    for _key in sorted_param:
-        sorted_param[_key] = str(sorted_param[_key])
+    # alphabetical sorting
+    sorted_param = dict(sorted(clear_payload.items(), key=lambda x: x[0]))
 
     payload_dict = {'PATH': endpoint, method.upper(): sorted_param}
 

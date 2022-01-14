@@ -10,13 +10,8 @@ class Webhook:
         if not isinstance(data, WebhookData):
             raise PassedTypeError('data must be WebhookData')
 
-        payload = {}
-        copy_data = deepcopy(data.to_dict())
-        del copy_data['signature']
-
-        for key in copy_data:
-            if copy_data[key] is not None:
-                payload[key] = copy_data[key]
+        payload = deepcopy(data.to_dict())
+        del payload['signature']
 
         if sign(endpoint, method, payload, secret) not in data.signature:
             raise SignatureVerificationError('signatures not match')
