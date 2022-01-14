@@ -13,7 +13,7 @@ def webhooks():
     try:
         data = WebhookData(payload)
 
-        Webhook.verify_signature('/webhooks', 'POST', data, api_secret)
+        print(Webhook.verify_signature('/webhooks', 'POST', data, api_secret))
         # usage data
     except ValueError:
         print("Error while decoding event!")
