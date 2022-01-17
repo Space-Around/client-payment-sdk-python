@@ -9,8 +9,6 @@
 Client payment SDK provides convenient access to the [API](https://sbank.gogo.vc/docs/) from applications written in the Python language. It includes a pre-defined set of classes for API resources that initialize themselves dynamically from API responses.
 ## Installation
 
-<hr>
-
 ### via `pip`
 1. Install pip.
 2. In the console, run the following command:
@@ -37,7 +35,7 @@ python setup.py install
 ### Requirements
 * Python 3.10+
 
-## Usage <hr>
+## Usage
 ```Python
 from client_payment_sdk import ClientPaymentSDK, sign
 
@@ -45,7 +43,7 @@ client = ClientPaymentSDK()
 ```
 
 
-## Documentation <hr>
+## Documentation
 See [API docs](https://sbank.gogo.vc/docs/).
 
 All examples [here](https://github.com/Space-Around/client-payment-sdk-python/tree/main/examples).
@@ -347,5 +345,5 @@ payload = {
 payload['signature'] = sign('/init', 'POST', payload, api_secret)
 ```
 
-## License <hr>
+## License
 This project is licensed under the [MIT license](https://github.com/eth-brownie/brownie/blob/master/LICENSE).
