@@ -39,7 +39,7 @@ setup(
     ],
 
     classifiers=[
-        'Development Status :: 1 - Alpha',
+        'Development Status :: 1 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
