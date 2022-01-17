@@ -2,6 +2,7 @@
 from abc import ABC
 from .exceptions import MatchKeyError, ParseResponseError
 
+
 class Model:
     def __init__(self, data):
         for key in self.__slots__:
@@ -78,8 +79,3 @@ class WebhookData(Model):
         'customer_fee',
         'masked_pan'
     )
-
-    # def __init__(self, data):
-    #     # Model.__init__(self, data)
-    #     super(WebhookData, self).__init__(data)
-    #     print(self.__dict__)
